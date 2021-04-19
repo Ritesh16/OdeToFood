@@ -3,3 +3,6 @@
 ################################################################################
 
 /OdeToFood/obj
+/OdeToFood/bin/Debug/net5.0
+/OdeToFood.Data/obj
+/OdeToFood.Core/obj

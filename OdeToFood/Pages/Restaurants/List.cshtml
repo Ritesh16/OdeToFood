@@ -2,3 +2,34 @@
 @model OdeToFood.Pages.Restaurants.ListModel
 @{
 }
+
+<form method="get">
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" value=""
+                   name="searchTerm" />
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    @foreach (var item in Model.Restaurants)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Location
+            </td>
+            <td>
+                @item.Cusine.ToString()
+            </td>
+        </tr>
+    }
+</table>
