@@ -1,6 +1,7 @@
 ﻿@page
 @model OdeToFood.Pages.Restaurants.ListModel
 @{
+    ViewData["Title"] = "Restaurants";
 }
 
 <form method="get">
@@ -43,3 +44,5 @@
     </tr>
     }
 </table>
+
+<a asp-page=".\Edit" class="btn btn-primary">Add New</a>
