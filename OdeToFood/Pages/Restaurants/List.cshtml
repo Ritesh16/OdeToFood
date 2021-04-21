@@ -6,7 +6,7 @@
 <form method="get">
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" value=""
+            <input type="search" class="form-control" asp-for="SearchTerm"
                    name="searchTerm" />
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button">
@@ -18,18 +18,28 @@
 </form>
 
 <table class="table">
-    @foreach (var item in Model.Restaurants)
+    @foreach (var restaurant in Model.Restaurants)
     {
-        <tr>
-            <td>
-                @item.Name
-            </td>
-            <td>
-                @item.Location
-            </td>
-            <td>
-                @item.Cusine.ToString()
-            </td>
-        </tr>
+    <tr>
+        <td>
+            @restaurant.Name
+        </td>
+        <td>
+            @restaurant.Location
+        </td>
+        <td>
+            @restaurant.Cusine
+        </td>
+        <td>
+            <a class="btn btn-lg" asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">
+                <i class="far fa-file-alt"></i>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-lg" asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
+                <i class="fas fa-edit"></i>
+            </a>
+        </td>
+    </tr>
     }
 </table>
