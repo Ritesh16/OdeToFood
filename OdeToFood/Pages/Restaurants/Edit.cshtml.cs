@@ -28,7 +28,7 @@ namespace OdeToFood.Pages.Restaurants
             Cuisines = htmlHelper.GetEnumSelectList<CusineType>();
             if (restaurantId.HasValue)
             {
-                Restaurant = restaurantData.GetRestaurantById(restaurantId.Value);
+                Restaurant = restaurantData.GetById(restaurantId.Value);
             }
             else
             {

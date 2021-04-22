@@ -21,7 +21,7 @@ namespace OdeToFood.Data
             };
         }
         
-        public IEnumerable<Restaurant> GetRestaurantByName(string name)
+        public IEnumerable<Restaurant> GetByName(string name)
         {
             return from r in this.Restaurants
                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
@@ -29,7 +29,7 @@ namespace OdeToFood.Data
                    select r;
         }
 
-        public Restaurant GetRestaurantById(int id)
+        public Restaurant GetById(int id)
         {
             return Restaurants.SingleOrDefault(x => x.Id == id);
         }
