@@ -1,0 +1,11 @@
+﻿@page
+
+@model OdeToFood.Pages.Practice.AllDependenciesModel
+@{
+    ViewData["Title"] = "Practice Dependencies";
+}
+
+@foreach (var item in Model.Values)
+{
+    <h3>@item.Value</h3>
+}

@@ -13,10 +13,12 @@ namespace OdeToFood.Pages.Restaurants
     {
         public Restaurant Restaurant { get; set; }
         private readonly IRestaurantData restaurantData;
+        private readonly IGuidService guidService;
 
-        public DeleteModel(IRestaurantData restaurantData)
+        public DeleteModel(IRestaurantData restaurantData, IGuidService guidService)
         {
             this.restaurantData = restaurantData;
+            this.guidService = guidService;
         }
         public IActionResult OnGet(int restaurantId)
         {
@@ -32,16 +34,24 @@ namespace OdeToFood.Pages.Restaurants
 
         public IActionResult OnPost(int restaurantId)
         {
-            var restaurant = restaurantData.Delete(restaurantId);
-            restaurantData.Commit();
-
-            if (restaurant == null)
+            try
             {
-                return RedirectToPage("./NotFound");
+                var restaurant = restaurantData.Delete(restaurantId);
+                restaurantData.Commit();
+
+                if (restaurant == null)
+                {
+                    return RedirectToPage("./NotFound");
+                }
+
+                TempData["Message"] = $"{restaurant.Name} deleted !!";
+                return RedirectToPage("./List");
+            }
+            catch(Exception ex)
+            {
+                throw new Exception($"Some error has occuured : {guidService.GetGuid()}");
             }
 
-            TempData["Message"] = $"{restaurant.Name} deleted !!";
-            return RedirectToPage("./List");
         }
     }
 }
